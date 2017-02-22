@@ -1,3 +1,4 @@
+
 <?php
 
 /*
@@ -12,6 +13,5 @@
  */
 
 Route::get('/', function () {
-	$migs = DB::table("migrations")->get();
-	return view('welcome', compact('migs'));
+	return view('welcome');
 });
