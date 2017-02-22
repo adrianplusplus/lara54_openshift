@@ -5,7 +5,8 @@ echo "Deploying..."
 
 # Uncomment the following line to use Composer and automatically install dependencies on deploy.
 #
-cd $OPENSHIFT_REPO_DIR/laravel; composer install
+cd $OPENSHIFT_REPO_DIR/laravel
+composer install
 
 source $OPENSHIFT_CARTRIDGE_SDK_BASH
 
@@ -16,7 +17,7 @@ echo 1>&2
 echo "Setting environment variables ..." 1>&2
 
 export APP_ENV="${APPLICATION_ENV:-production}"
-if [[ "${APPLICATION_ENV:-}" != "development"]]; then
+if [[ "${APPLICATION_ENV:-}" != "development" ]]; then
   export APP_DEBUG=false
 else
   export APP_DEBUG=true
@@ -28,7 +29,7 @@ fi
 
 if [ ! -z "$OPENSHIFT_APP_DNS" ]; then
   export APP_URL="$OPENSHIFT_APP_DNS"
-  if [ "$(type -t set_env_var)" == "function"]; then
+  if [ "$(type -t set_env_var)" == "function" ]; then
     set_env_var 'APP_URL' $APP_URL $OPENSHIFT_HOMEDIR/.env/user_vars
   fi
 fi
@@ -48,7 +49,7 @@ if [ ! -z "$OPENSHIFT_MYSQL_DB_HOST" ]; then
   export DB_DRIVER="mysql"
 fi
 
-f [ -z "$DB_DRIVER" ]; then
+if [ -z "$DB_DRIVER" ]; then
   echo 1>&2
   echo "Could not find the database cartridge.  Please run:" 1>&2
   echo "rhc cartridge add -a $OPENSHIFT_APP_NAME -c mysql-5.5" 1>&2
@@ -91,6 +92,6 @@ fi
 echo 1>&2
 echo "Running 'php artisan migrate --force'..." 1>&2
 echo 1>&2
-pushd ${OPENSHIFT_REPO_DIR} > /dev/null
+pushd ${OPENSHIFT_REPO_DIR}/laravel > /dev/null
 php artisan migrate --force
 popd > /dev/null
