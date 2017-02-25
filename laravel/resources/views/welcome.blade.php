@@ -98,13 +98,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($migs as $r)
-                        <tr>
-                            <td>{{$r->id}}</td>
-                            <td>{{$r->migration}}</td>
-                            <td>{{$r->batch}}</td>
-                        </tr>
-                        @endforeach
+                        {{--@foreach($migs as $r)--}}
+                        {{--<tr>--}}
+                            {{--<td>{{$r->id}}</td>--}}
+                            {{--<td>{{$r->migration}}</td>--}}
+                            {{--<td>{{$r->batch}}</td>--}}
+                        {{--</tr>--}}
+                        {{--@endforeach--}}
                     </tbody>
                 </table>
             </div>
