@@ -13,6 +13,5 @@
  */
 
 Route::get('/', function () {
-    $migrations = DB::table('migrations')->get();
-	return view('welcome', compact('migrations'));
+	return view('welcome');
 });

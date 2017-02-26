@@ -89,24 +89,6 @@
                     <a href="https://forge.laravel.com">Forge</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>id</th>
-                            <th>migration</th>
-                            <th>batch</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($migrations as $r)
-                        <tr>
-                            <td>{{$r->id}}</td>
-                            <td>{{$r->migration}}</td>
-                            <td>{{$r->batch}}</td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
             </div>
         </div>
     </body>
